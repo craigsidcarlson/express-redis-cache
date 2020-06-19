@@ -93,7 +93,7 @@
         it ( 'should be have a property "type" which is a string and equals the sent type', function () {
           results.forEach(function (entry) {
             entry.should.have.property('type').which.is.a.String();
-            entry.type.should.equal(this.getHeaders()['content-type']);
+            entry.type.should.equal(res._headers['content-type']);
           });
         });
 
@@ -169,7 +169,7 @@
         it ( 'should be have a property "type" which is a string and equals the sent type', function () {
           results.forEach(function (entry) {
             entry.should.have.property('type').which.is.a.String();
-            entry.type.should.equal(this.getHeaders()['content-type']);
+            entry.type.should.equal(res._headers['content-type']);
           });
         });
 

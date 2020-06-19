@@ -219,7 +219,7 @@ You can also specify
 
 # Content Type
 
-You can use `express-redis-cache` to cache HTML pages, CSS stylesheets, JSON objects, anything really. Content-types are saved along the cache body and are retrieved using `res._headers['content-type']`. If you want to overwrite that, you can pass a custom type.
+You can use `express-redis-cache` to cache HTML pages, CSS stylesheets, JSON objects, anything really. Content-types are saved along the cache body and are retrieved using `this.getHeaders()['content-type']`. If you want to overwrite that, you can pass a custom type.
 
 ```js
 app.get('/index.html',

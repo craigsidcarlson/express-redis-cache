@@ -124,7 +124,7 @@
     });
 
     it ( 'should return a function', function () {
-      middleware = cache.route({name: 'binary', expire: _expire, binary: true});
+      middleware = cache.route({name: 'utf8', expire: _expire, binary: true});
       middleware.should.be.a.Function();
     });
 
@@ -139,13 +139,13 @@
               throw error;
             }
 
-            res.send(new Buffer('hello folks!', 'binary'));
+            res.send(Buffer.from('hello folks!').toString('base64'));
             done();
           });
       });
 
       it ( 'should have created the cache entry', function (done) {
-        cache.get('binary', function (error, $results) {
+        cache.get('utf8', function (error, $results) {
           if ( error ) {
             throw error;
           }
@@ -161,7 +161,7 @@
           results.forEach(function (entry) {
             entry.should.have.property('body').which.is.a.String();
             entry.body.should.equal('aGVsbG8gZm9sa3Mh'); //aGVsbG8gZm9sa3Mh = 'hello folks!' in base64
-            var decodedString = new Buffer(entry.body, 'base64').toString('utf8');
+            var decodedString = Buffer.from(entry.body, 'base64').toString('utf8');
             decodedString.should.equal('hello folks!');
           });
         });

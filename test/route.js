@@ -23,7 +23,10 @@
 
   /** Emulate req **/
   var req = {
-    originalUrl: '/index'
+    originalUrl: '/index',
+    body: {
+      test: 'hello World'
+    }
   };
 
   /** Emulate res **/
